@@ -1,0 +1,128 @@
+/* Prado Digital - hoja de estilos externa CSS3 */
+:root {
+  --oscuro: #101828;
+  --azul: #2563eb;
+  --celeste: #dbeafe;
+  --texto: #344054;
+  --fondo: #f8fafc;
+  --blanco: #ffffff;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--texto);
+  line-height: 1.65;
+  background: var(--blanco);
+}
+
+.contenedor { width: min(1120px, 90%); margin: 0 auto; }
+.site-header { background: var(--oscuro); color: var(--blanco); }
+.encabezado { min-height: 78px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+
+/* ==========================================================================
+   🛠️ CORRECCIÓN DEL LOGO: Se añadieron flexbox y dimensiones controladas
+   ========================================================================== */
+.logo { 
+  color: var(--blanco); 
+  font-size: 1.25rem; 
+  font-weight: 800; 
+  letter-spacing: 1px; 
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Espacio ideal entre la imagen y el texto */
+}
+
+.logo img {
+  height: 40px; /* Altura máxima controlada para que no deforme el header */
+  width: auto;  /* Mantiene la proporción original de tu imagen */
+  object-fit: contain;
+}
+
+.logo span { color: #60a5fa; }
+
+/* Elementos de Navegación */
+.menu { display: flex; flex-wrap: wrap; gap: 24px; list-style: none; padding: 0; margin: 0; }
+.menu a { color: var(--blanco); text-decoration: none; font-weight: 600; transition: color .25s ease, transform .25s ease; display: inline-block; }
+.menu a:hover, .menu a:focus-visible { color: #93c5fd; transform: translateY(-2px); }
+
+/* Portada / Hero */
+.hero { background: linear-gradient(120deg, #101828, #1d4ed8); color: var(--blanco); padding: 92px 0 100px; }
+.hero-contenido { max-width: 850px; }
+.etiqueta { color: #bfdbfe; font-size: .8rem; font-weight: 700; letter-spacing: 2px; }
+h1 { max-width: 800px; font-size: clamp(2.4rem, 6vw, 4.5rem); line-height: 1.08; margin: 16px 0; }
+h1 span { color: #93c5fd; }
+.hero p:not(.etiqueta) { max-width: 660px; font-size: 1.1rem; color: #e5e7eb; }
+
+/* Botones */
+.boton { display: inline-block; margin-top: 18px; padding: 12px 22px; border-radius: 8px; background: #60a5fa; color: #0b1730; font-weight: 800; text-decoration: none; transition: transform .25s ease, box-shadow .25s ease, background .25s ease; }
+.boton:hover, .boton:focus-visible { transform: translateY(-4px) scale(1.02); background: #bfdbfe; box-shadow: 0 10px 24px #0003; }
+
+/* Secciones Generales */
+.seccion { padding-top: 68px; padding-bottom: 68px; }
+h2 { margin: 0 0 10px; color: var(--oscuro); font-size: clamp(1.8rem, 4vw, 2.5rem); line-height: 1.2; }
+.introduccion { margin: 0 0 28px; max-width: 760px; }
+
+/* Grid de Tarjetas (Estructura clásica con floats) */
+.tarjeta { float: left; width: 31.333%; margin: 0 1% 20px; min-height: 240px; padding: 25px; background: var(--fondo); border: 1px solid #e4e7ec; border-radius: 14px; transition: transform .25s ease, box-shadow .25s ease; }
+.tarjeta:hover { transform: translateY(-7px); box-shadow: 0 14px 30px #10182818; }
+.icono { display: grid; place-items: center; width: 48px; height: 48px; border-radius: 12px; background: var(--celeste); color: var(--azul); font-weight: 800; }
+.tarjeta h3, .media-columna h3 { color: var(--oscuro); margin-bottom: 8px; }
+.limpiar { clear: both; }
+
+/* Multimedia */
+.multimedia { background: var(--fondo); }
+/* Corregido: añadido clear left para evitar colisiones de flotados previas */
+.media-columna { clear: both; float: left; width: 48%; margin-right: 2%; padding: 22px; background: var(--blanco); border: 1px solid #e4e7ec; border-radius: 12px; }
+audio { width: 100%; margin-top: 12px; }
+
+/* ==========================================================================
+   🛠️ CORRECCIÓN DEL REPRODUCTOR DE VIDEO: Cambiado de iframe a .video-player
+   ========================================================================== */
+.video-contenedor { position: relative; width: 100%; aspect-ratio: 16 / 9; overflow: hidden; border-radius: 10px; }
+.video-contenedor .video-player { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; object-fit: cover; }
+
+/* Llamada a la acción */
+.llamada { text-align: center; clear: both; }
+.llamada p { max-width: 680px; margin: 12px auto; }
+.boton-claro { background: var(--oscuro); color: var(--blanco); }
+
+/* Pie de página */
+footer { background: var(--oscuro); color: #d0d5dd; padding: 34px 0; }
+.pie { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 18px; }
+.logo-pie { display: flex; }
+.pie p { margin: 8px 0; }
+.copyright { width: 100%; border-top: 1px solid #344054; padding-top: 16px; font-size: .85rem; }
+
+/* ==========================================================================
+   Media Queries (Diseño Responsivo)
+   ========================================================================= */
+
+/* Escritorio y tablet: desde 768px */
+@media (min-width: 768px) {
+  .encabezado { flex-direction: row; }
+  .hero { padding-top: 105px; padding-bottom: 112px; }
+  .tarjeta { width: 31.333%; }
+  .media-columna { clear: none; } /* Permite que se pongan uno al lado del otro en pantallas grandes */
+}
+
+/* Móvil: menos de 768px */
+@media (max-width: 767px) {
+  .encabezado { padding: 18px 0; align-items: flex-start; flex-direction: column; }
+  .menu { gap: 10px 18px; }
+  .hero { padding: 58px 0 66px; }
+  .tarjeta, .media-columna { float: none; width: 100%; margin: 0 0 16px; }
+  .seccion { padding-top: 46px; padding-bottom: 46px; }
+  .pie { align-items: flex-start; flex-direction: column; }
+}
+
+/* Pantallas muy pequeñas */
+@media (max-width: 420px) {
+  .contenedor { width: 92%; }
+  .menu { font-size: .92rem; }
+  .boton { width: 100%; text-align: center; }
+}
